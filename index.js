@@ -1,8 +1,11 @@
+require('dotenv').config();
+
 let express = require('express');
 let app = express();
 let ejs = require('ejs');
 const haikus = require('./haikus.json');
 const port = process.env.PORT || 3000;
+const client = require('twilio')(process.env.accountSid, process.env.authToken);
 const { Pool } = require('pg')
 
 const pool = new Pool({
@@ -26,6 +29,16 @@ app.get('/', (req, res) => {
 
 app.post('/heart', (req, res) => {
   pool.query('UPDATE haikus SET hearts = hearts + 1 WHERE id = $1', [req.body.id], (err, haikus) => {
+    console.log('hi');
+    client.messages
+      .create(
+          {
+            body: 'Hi there!',
+            from: '+16179817986',
+            to: '+19785022427',
+            mediaUrl: 'https://user-images.githubusercontent.com/2132776/88610282-3dbf5100-d054-11ea-9c7b-66af3c9fc912.png'
+         })
+      .then(message => console.log(message.sid));
     res.send('Success');
   });
 });
