@@ -13,8 +13,6 @@ services:
       NODE_ENV: development
       PORT: 3000
       HOST: host.docker.internal
-    ports:
-        - 3000:3000
     working_dir: /workspace
     volumes:
       - ..:/workspace:cached
@@ -27,8 +25,6 @@ services:
   db:
     image: postgres
     restart: unless-stopped
-    ports: 
-      - 5432:5432
     env_file: ../.env
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
