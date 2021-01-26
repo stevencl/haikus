@@ -13,6 +13,8 @@
     // You can edit these settings after create using File > Preferences > Settings > Remote.
     "settings": {
         "terminal.integrated.shell.linux": "/bin/bash",
+        "workbench.experimental.gettingStarted": true,
+		"workbench.startupEditor": "gettingStarted"
     },
 
     // Specifies a command that should be run after the container has been created.
