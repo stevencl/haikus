@@ -41,7 +41,7 @@
      $(function(){
         $(".heart").click(function (e) {
           let countElement = $(this).children('.heart-value');
-          countElement.html(parseInt(countElement.html(), 10)+1)
+          countElement.html(parseInt(countElement.html(), 10))
           $(this).addClass('clicked');
           $.post('/heart', {id: e.currentTarget.id});
         });

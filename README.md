@@ -1,3 +1,7 @@
 # Haikus for June
 
-Readme updates in progress
+To run the program, type
+```
+npm start
+```
+and hit enter
